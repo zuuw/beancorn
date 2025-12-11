@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beancorn | Streamer & Content Creator</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-color: #121212;
+            --card-bg: rgba(30, 30, 30, 0.7);
+            --text-main: #ffffff;
+            --text-muted: #b0b0b0;
+            --accent-pink: #ffc2d1; /* Pastel Pink */
+            --accent-glow: rgba(255, 194, 209, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* Prevents scrollbars from floating emojis */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* --- BACKGROUND ANIMATION CONTAINER --- */
+        #emoji-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            bottom: -50px;
+            font-size: 24px;
+            opacity: 0.6;
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- MAIN CARD --- */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 500px;
+            padding: 3rem 2rem;
+            
+            /* Glassmorphism Effect */
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-pink);
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-pink);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .about-section p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 2.5rem;
+        }
+
+        /* --- BUTTONS --- */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-pink);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 194, 209, 0.2);
+        }
+
+        .btn:hover {
+            background: var(--accent-pink);
+            color: var(--bg-color);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="emoji-container"></div>
+
+    <main class="container">
+        <header>
+            <h1>beancorn</h1>
+            <div class="subtitle">Streamer • Creator • Gamer</div>
+        </header>
+
+        <section class="about-section">
+            <h2>About Me</h2>
+            <p>
+                Welcome to the stream! I'm Beancorn, a cozy variety streamer who loves RPGs, chatting, and creating a welcoming vibe. Whether we're grinding levels or just hanging out, I'm happy you stopped by. Grab a snack and stay a while!
+            </p>
+        </section>
+
+        <div class="social-buttons">
+            <a href="https://twitch.tv/beancorn" target="_blank" class="btn" title="Twitch">
+                <i class="fa-brands fa-twitch"></i>
+            </a>
+            <a href="https://x.com/beancorn" target="_blank" class="btn" title="X / Twitter">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://instagram.com/beancorn" target="_blank" class="btn" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // --- JAVASCRIPT FOR FLOATING EMOJIS ---
+        
+        const emojiContainer = document.getElementById('emoji-container');
+        // You can add more emojis to this list
+        const emojis = ['🌽', '🌸', '✨', '💖', '🎮', '🦄', '🎀', '☁️'];
+
+        function createEmoji() {
+            const span = document.createElement('span');
+            span.classList.add('floating-emoji');
+            
+            // Pick a random emoji
+            span.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+            // Random horizontal position (0 to 100%)
+            span.style.left = Math.random() * 100 + '%';
+
+            // Random size (20px to 40px)
+            const size = Math.random() * 20 + 20;
+            span.style.fontSize = size + 'px';
+
+            // Random animation duration (5s to 15s) for varied speed
+            const duration = Math.random() * 10 + 5;
+            span.style.animationDuration = duration + 's';
+
+            emojiContainer.appendChild(span);
+
+            // Remove the element after animation finishes to keep browser clean
+            setTimeout(() => {
+                span.remove();
+            }, duration * 1000);
+        }
+
+        // Create a new emoji every 600 milliseconds
+        setInterval(createEmoji, 600);
+
+        // Create a few immediately so the screen isn't empty on load
+        for(let i = 0; i < 15; i++) {
+            createEmoji();
+        }
+    </script>
+
+</body>
+</html>
